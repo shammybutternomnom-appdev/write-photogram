@@ -18,4 +18,40 @@ class PicturesController < ApplicationController
 
     render("pic_templates/details.html.erb")
   end
+  
+  def picture_form
+    render("/pic_templates/pic_form.html.erb")
+  end
+  
+  def create_photo_record
+    p = Photo.new
+    p.image = params.fetch("pic_image")
+    p.caption = params.fetch("pic_caption")
+    p.owner_id = params.fetch("poster_id")
+    p.save
+    redirect_to("/")
+  end
+  
+  def photo_to_delete
+    pic_id = params.fetch("id_to_delete")
+    photo = Photo.where({:id => pic_id}).first
+    photo.destroy
+    redirect_to("/")
+  end
+  
+  def photo_update_form
+    pic_id = params.fetch("photo_id")
+    @photo = Photo.where({:id => pic_id}).first
+    render("pic_templates/pic_update_form.html.erb")
+  end
+  
+  def photo_to_update
+    pic_id = params.fetch("photo_id")
+    photo = Photo.where({:id => pic_id}).first
+    photo.image = params.fetch("pic_image")
+    photo.caption = params.fetch("pic_caption")
+    photo.save
+    redirect_to("/photos/"+pic_id.to_s)
+  end
+  
 end
