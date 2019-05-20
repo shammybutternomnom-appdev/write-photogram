@@ -10,6 +10,15 @@
 #
 
 class Like < ApplicationRecord
+  # def fan
+  #   return User.where({ :id => self.fan_id }).at(0)
+  # end
+
   belongs_to(:fan, { :class_name => "User" })
+
+  # def photo
+  #   return Photo.where({ :id => self.photo_id }).at(0)
+  # end
+
   belongs_to(:photo)
 end
