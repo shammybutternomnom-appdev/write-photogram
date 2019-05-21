@@ -1,6 +1,6 @@
 <h1>Update photo #<%=@photo.id%></h1>
 
-<form action="/update_photo_record/<%=@photo.id%>">
+<form action="/update_photo_record/<%=@photo.id%>" method="post">
   <label for="image_input">Image URL</label>
   <input id="image_input" type="text" name="pic_image" placeholder="Enter a URL for the image..." value="<%=@photo.image%>">
 

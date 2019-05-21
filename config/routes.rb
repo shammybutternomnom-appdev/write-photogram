@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   
   match("/existing_photo_form/:photo_id", {:controller => "pictures", :action => "photo_update_form", :via => "get"})
 
-  match("/update_photo_record/:photo_id", {:controller => "pictures", :action => "photo_to_update", :via => "get"})
+  match("/update_photo_record/:photo_id", {:controller => "pictures", :action => "photo_to_update", :via => "post"})
 
   # The routes below are for the ActiveAdmin dashboard located at /admin. You can ignore them.
   devise_for :admin_users, ActiveAdmin::Devise.config
